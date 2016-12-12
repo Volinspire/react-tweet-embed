@@ -19,7 +19,7 @@ class TweetEmbed extends React.Component {
     const options = this.props.options || {}
 
     const renderTweet = () => {
-      window.twttr.widgets.createTweetEmbed(this.props.id, this._div, options)
+      window.twttr.widgets.createTweetEmbed(this.props.id, this._div, options).then(() => this.props.onRender)
     }
     if (!window.twttr) {
       addScript('//platform.twitter.com/widgets.js', renderTweet)
@@ -36,7 +36,12 @@ class TweetEmbed extends React.Component {
 
 TweetEmbed.propTypes = {
   id: PropTypes.string,
-  options: PropTypes.object
+  options: PropTypes.object,
+  onRender: PropTypes.func
+}
+
+TweetEmbed.defaultProps = {
+  onRender: () => true
 }
 
 export default TweetEmbed
