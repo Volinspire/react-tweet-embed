@@ -53,9 +53,7 @@ var TweetEmbed = function (_React$Component) {
       var options = this.props.options || {};
 
       var renderTweet = function renderTweet() {
-        window.twttr.widgets.createTweetEmbed(_this2.props.id, _this2._div, options).then(function () {
-          return _this2.props.onRender;
-        });
+        window.twttr.widgets.createTweetEmbed(_this2.props.id, _this2._div, options, _this2.props.onRender);
       };
       if (!window.twttr) {
         addScript('//platform.twitter.com/widgets.js', renderTweet);
