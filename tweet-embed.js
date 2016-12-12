@@ -19,7 +19,7 @@ class TweetEmbed extends React.Component {
     const options = this.props.options || {}
 
     const renderTweet = () => {
-      window.twttr.widgets.createTweetEmbed(this.props.id, this._div, options).then(() => this.props.onRender)
+      window.twttr.widgets.createTweetEmbed(this.props.id, this._div, options, this.props.onRender)
     }
     if (!window.twttr) {
       addScript('//platform.twitter.com/widgets.js', renderTweet)
